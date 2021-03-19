@@ -19,6 +19,8 @@ export {Filter, SortOption, IpPrefixSubscription, IpPrefix }
 // API stuff
 export {freeSubnets, prefixSubscriptionsByRootPrefix, prefix_filters }
 
+// TODO: ff goed kijken naar https://github.com/tabler/tabler-react/blob/master/src/index.js
+
 /* OLD EXAMPLE */
 interface Props {
   text: string
