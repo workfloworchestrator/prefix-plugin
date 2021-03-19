@@ -8,6 +8,10 @@
 
 ```bash
 npm install --save orchestrator-client-prefix-page
+
+Todo: find out correct URL
+git.ia.surfsara.nl:netdev/automation/projects/orchestrator-client-prefix-page.git
+
 ```
 
 ## Usage
@@ -33,7 +37,12 @@ SURF © [rene.dohmen@surfnet.nl](https://github.com/acidjunk)
 ## DEV STUFF
 
 To get started, in one tab, run:
-$ cd orchestrator-client-prefix-page && yarn start
+```bash
+cd orchestrator-client-prefix-page && yarn start
+```
 
 And in another tab, run the create-react-app dev server:
-$ cd orchestrator-client-prefix-page/example && yarn start
+
+```bash
+cd orchestrator-client-prefix-page/example && yarn start
+```
