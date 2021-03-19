@@ -27,4 +27,13 @@ class Example extends Component {
 
 ## License
 
-SURF © [acidjunk](https://github.com/acidjunk)
+SURF © [rene.dohmen@surfnet.nl](https://github.com/acidjunk)
+
+
+## DEV STUFF
+
+To get started, in one tab, run:
+$ cd orchestrator-client-prefix-page && yarn start
+
+And in another tab, run the create-react-app dev server:
+$ cd orchestrator-client-prefix-page/example && yarn start
