@@ -3,9 +3,9 @@
  */
 
 @use "sass:color";
-@use "../stylesheets/vars.scss";
+@use "./stylesheets/vars.scss";
 
-div.checkbox,
+.checkbox,
 div.level_2,
 div.skip {
     input[type="checkbox"] {

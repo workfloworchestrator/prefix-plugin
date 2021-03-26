@@ -1,0 +1,99 @@
+.euiButton--primary.euiButton--fill {
+  color: #fff !important;
+}
+
+.euiButton--warning.euiButton--fill {
+  color: #fff !important;
+}
+
+.euiButton--warning.euiButton {
+  background-color: #faf0e8 !important;
+}
+
+.euiButton--warning.euiButton--fill {
+  background-color: #e39846 !important;
+}
+
+.euiTitle {
+  color: #565656;
+}
+
+/*!
+ * Copyright 2019-2020 SURF.
+ */
+.checkbox input[type=checkbox],
+div.level_2 input[type=checkbox],
+div.skip input[type=checkbox] {
+  display: none;
+}
+.checkbox label,
+div.level_2 label,
+div.skip label {
+  display: inline-block;
+  margin: 3px 0;
+}
+.checkbox label.info,
+div.level_2 label.info,
+div.skip label.info {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.checkbox input[type=checkbox] + label span,
+div.level_2 input[type=checkbox] + label span,
+div.skip input[type=checkbox] + label span {
+  font-size: 11px;
+  background-color: white;
+  border: 1px solid #4db2cf;
+  border-radius: 3px;
+  padding: 1px 2px;
+  margin: 2px 0;
+  cursor: pointer;
+}
+.checkbox input[type=checkbox] + label span i,
+div.level_2 input[type=checkbox] + label span i,
+div.skip input[type=checkbox] + label span i {
+  color: transparent;
+  padding: 0 1px;
+}
+.checkbox input[type=checkbox]:disabled + label span,
+div.level_2 input[type=checkbox]:disabled + label span,
+div.skip input[type=checkbox]:disabled + label span {
+  border: 1px solid #97aab3;
+  background-color: #eff2f3;
+  cursor: not-allowed;
+}
+.checkbox input[type=checkbox]:checked + label span,
+div.level_2 input[type=checkbox]:checked + label span,
+div.skip input[type=checkbox]:checked + label span {
+  border: 2px solid #4db2cf;
+  border-radius: 2px;
+  box-shadow: none;
+  padding: 0;
+}
+.checkbox input[type=checkbox]:checked + label span i,
+div.level_2 input[type=checkbox]:checked + label span i,
+div.skip input[type=checkbox]:checked + label span i {
+  background-color: #4db2cf;
+  color: white;
+  padding: 3px 2px;
+}
+.checkbox input[type=checkbox]:checked:disabled + label span,
+div.level_2 input[type=checkbox]:checked:disabled + label span,
+div.skip input[type=checkbox]:checked:disabled + label span {
+  border: 3px solid #a6b6be;
+  cursor: default;
+}
+.checkbox input[type=checkbox]:checked:disabled + label span i,
+div.level_2 input[type=checkbox]:checked:disabled + label span i,
+div.skip input[type=checkbox]:checked:disabled + label span i {
+  background-color: #a6b6be;
+}
+
+div.level_2 {
+  padding-left: 50px;
+}
+div.skip {
+  font-style: italic;
+}
+
+/*# sourceMappingURL=CheckBox.css.map */

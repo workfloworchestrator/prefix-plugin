@@ -2,9 +2,9 @@
  * Copyright 2019-2020 SURF.
  */
 
-@use "../stylesheets/vars.scss";
+@use "./stylesheets/vars.scss";
 
-section.filter-drop-down {
+.dropDown {
     position: relative;
 
     border: 1px solid vars.$lighter-grey;

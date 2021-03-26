@@ -2,7 +2,7 @@
  * Copyright 2019-2020 SURF.
  */
 
-// import "./FilterDropDown.scss";
+import styles from "./FilterDropDown.css";
 
 import CheckBox from './CheckBox'
 import React from 'react'
@@ -76,7 +76,7 @@ export default class FilterDropDown extends React.PureComponent<
   }
 
   renderDropDown = (items: Filter[], filterBy: filterCallback) => (
-    <ul className='drop-down'>
+    <ul className={styles.dropDown}>
       {items.map((item) => this.renderDropDownItem(item, filterBy))}
     </ul>
   )

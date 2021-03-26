@@ -19,16 +19,6 @@ import debounce from 'lodash/debounce'
 import memoize from 'lodash/memoize'
 import pMap from 'p-map'
 import React from 'react'
-// import { FormattedMessage, WrappedComponentProps, injectIntl } from 'react-intl'
-// import ScrollUpButton from 'react-scroll-up-button'
-// import ApplicationContext from 'utils/ApplicationContext'
-// import {
-//   familyFullName,
-//   ipAddressToNumber,
-//   ipamStates,
-//   organisationNameByUuid,
-//   renderDate
-// } from 'utils/Lookups'
 import {
   Filter,
   IpPrefix,

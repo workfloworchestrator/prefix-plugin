@@ -1,0 +1,86 @@
+.euiButton--primary.euiButton--fill {
+  color: #fff !important;
+}
+
+.euiButton--warning.euiButton--fill {
+  color: #fff !important;
+}
+
+.euiButton--warning.euiButton {
+  background-color: #faf0e8 !important;
+}
+
+.euiButton--warning.euiButton--fill {
+  background-color: #e39846 !important;
+}
+
+.euiTitle {
+  color: #565656;
+}
+
+/*!
+ * Copyright 2019-2020 SURF.
+ */
+.dropDown {
+  position: relative;
+  border: 1px solid #d9d9d8;
+  border-radius: 3px;
+  padding-top: 1px;
+  margin-right: 25px;
+  min-width: 215px;
+  display: inline-block;
+  font-weight: bold;
+}
+.dropDown div.filtered {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+}
+.dropDown div.filtered .filter-label,
+.dropDown div.filtered .filter-label-divider {
+  color: #a6b6be;
+}
+.dropDown div.filtered .filter-name {
+  color: #4db2cf;
+  margin: 0 15px;
+}
+.dropDown div.filtered span:last-child {
+  margin-left: auto;
+}
+.dropDown div.filtered i {
+  color: #4db2cf;
+}
+.dropDown div.filtered i.fa-undo {
+  padding-right: 8px;
+}
+.dropDown ul.drop-down {
+  position: absolute;
+  z-index: 2;
+  top: 40px;
+  right: 0;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 1px 2px 6px 1px #a6b6be;
+  min-width: 210px;
+  display: inline-block;
+  border-radius: 3px;
+}
+.dropDown ul.drop-down li {
+  display: flex;
+  color: #a6b6be;
+  align-items: center;
+  cursor: pointer;
+}
+.dropDown ul.drop-down li label {
+  margin-left: auto;
+  padding-right: 8px;
+  cursor: pointer;
+}
+.dropDown ul.drop-down li i.fa-filter {
+  color: #4db2cf;
+}
+.dropDown ul.drop-down li i.fa-filter:hover {
+  color: #274b72;
+}
+
+/*# sourceMappingURL=FilterDropDown.css.map */
