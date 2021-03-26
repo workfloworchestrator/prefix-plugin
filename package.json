@@ -24,10 +24,10 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "axios": "^0.21.1",
     "@elastic/datemath": "^5.0.3",
-    "@elastic/eui": "^30.5.1"
+    "@elastic/eui": "^30.5.1",
+    "axios": "^0.21.1",
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "@elastic/datemath": "^5.0.3",
@@ -42,7 +42,6 @@
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "axios": "^0.21.1",
-    "microbundle-crl": "^0.13.10",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
@@ -57,15 +56,22 @@
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
     "lodash": "^4.14.149",
+    "microbundle-crl": "^0.13.10",
     "moment": "^2.29.1",
+    "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "^3.4.1",
+    "sass": "^1.32.8",
     "typescript": "^3.7.5"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@types/classnames": "^2.2.11",
+    "classnames": "^2.2.6"
+  }
 }

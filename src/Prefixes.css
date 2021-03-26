@@ -1,0 +1,247 @@
+.euiButton--primary.euiButton--fill {
+  color: #fff !important;
+}
+
+.euiButton--warning.euiButton--fill {
+  color: #fff !important;
+}
+
+.euiButton--warning.euiButton {
+  background-color: #faf0e8 !important;
+}
+
+.euiButton--warning.euiButton--fill {
+  background-color: #e39846 !important;
+}
+
+.euiTitle {
+  color: #565656;
+}
+
+/*!
+ * Copyright 2019-2020 SURF.
+ */
+.options {
+  display: flex;
+  padding-top: 25px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.refresh {
+  display: flex;
+  background-color: white;
+  padding: 0 15px 0 0;
+}
+.refresh .checkbox {
+  margin-left: auto;
+}
+
+.prefixes {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px 20px;
+}
+.prefixes a.new {
+  margin-left: 25px;
+}
+.prefixes a.new i.fa-plus {
+  margin-left: 35px;
+}
+.prefixes td,
+.prefixes th {
+  text-align: left;
+  vertical-align: middle;
+}
+.prefixes tr {
+  border-bottom: 1px solid #eff2f3;
+}
+.prefixes tr.Allocated {
+  cursor: pointer;
+  background-color: #ecf9fe;
+}
+.prefixes tr.Allocated:hover {
+  background-color: #bceafb;
+}
+.prefixes tr.Planned {
+  cursor: default;
+  background-color: #fdf6d4;
+}
+.prefixes tr.Free {
+  cursor: pointer;
+  background-color: #d0ffd9;
+}
+.prefixes tr.Free:hover {
+  background-color: #9dffb0;
+}
+.prefixes tr.selected {
+  background-color: #565656;
+  color: white;
+}
+.prefixes tr.selected:hover {
+  background-color: black;
+}
+.prefixes thead th {
+  cursor: pointer;
+  padding: 5px 5px 10px 5px;
+}
+.prefixes thead th.customer {
+  width: 15%;
+}
+.prefixes thead th.sub_id {
+  width: 7%;
+}
+.prefixes thead th.description {
+  width: 20%;
+}
+.prefixes thead th.fam {
+  width: 5%;
+}
+.prefixes thead th.len {
+  width: 5%;
+}
+.prefixes thead th.prefix {
+  width: 14%;
+}
+.prefixes thead th.parent {
+  width: 14%;
+}
+.prefixes thead th.status {
+  width: 10%;
+}
+.prefixes thead th.start_date {
+  width: 10%;
+}
+.prefixes thead span {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: larger;
+  color: #a6b6be;
+  padding: 7px 2px 7px 0;
+}
+.prefixes thead i.fa {
+  float: right;
+  margin-right: 15px;
+  color: #a6b6be;
+  font-size: 18px;
+}
+.prefixes tbody tr {
+  cursor: pointer;
+}
+.prefixes tbody tr:hover {
+  background-color: #f9fcfd;
+}
+.prefixes tbody tr:hover.Planned {
+  background-color: #fbeca3;
+}
+.prefixes tbody tr:hover.Free {
+  background-color: #9dffb0;
+}
+.prefixes tbody tr:hover.Allocated {
+  background-color: #bceafb;
+}
+.prefixes tbody td {
+  word-break: break-word;
+  word-wrap: break-word;
+  padding: 15px 0 0 2px;
+}
+.prefixes tbody td i.fa-info-circle {
+  color: #4db2cf;
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.prefixes tbody td div.tool-tip {
+  box-shadow: 1px 2px 6px 1px #d9d9d8;
+  padding: 10px !important;
+  font-size: 14px !important;
+  pointer-events: auto !important;
+  color: #565656 !important;
+  background-color: white !important;
+  max-width: 390px;
+}
+.prefixes tbody td div.tool-tip.show {
+  opacity: 1 !important;
+}
+@media (max-width: 767px) {
+  .prefixes tbody td div.tool-tip {
+    max-width: 200px;
+  }
+}
+.prefixes tbody td div.tool-tip span {
+  text-transform: none;
+}
+.prefixes tbody td div.tool-tip span.label {
+  font-weight: bold;
+  display: block;
+  padding: 3px 0;
+}
+.prefixes tbody td div.tool-tip span.value {
+  font-weight: normal;
+  float: right;
+  padding: 0 0 0 60px;
+}
+.prefixes tbody td.customer {
+  width: 15%;
+}
+.prefixes tbody td.sub_id {
+  width: 7%;
+}
+.prefixes tbody td.description {
+  width: 20%;
+}
+.prefixes tbody td.fam {
+  width: 5%;
+}
+.prefixes tbody td.len {
+  width: 5%;
+}
+.prefixes tbody td.prefix {
+  width: 14%;
+}
+.prefixes tbody td.parent {
+  width: 14%;
+}
+.prefixes tbody td.status {
+  width: 10%;
+}
+.prefixes tbody td.start_date {
+  width: 10%;
+}
+.prefixes tbody td.assignee {
+  color: #4db2cf;
+  font-weight: bold;
+  padding-right: 15px;
+}
+.prefixes tbody td.actions {
+  cursor: pointer;
+  text-align: right;
+  font-size: 18px;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .prefixes thead {
+    display: none;
+  }
+  .prefixes tr {
+    margin-bottom: 10px;
+    display: block;
+    border-bottom: 2px solid #d9d9d8;
+  }
+  .prefixes td {
+    display: block;
+    text-align: right;
+    border-bottom: 1px dotted #ecf9fe;
+    padding: 8px 0;
+  }
+  .prefixes td:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    color: #a6b6be;
+  }
+}
+
+/*# sourceMappingURL=Prefixes.css.map */
