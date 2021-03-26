@@ -19,12 +19,12 @@ git.ia.surfsara.nl:netdev/automation/projects/orchestrator-client-prefix-page.gi
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'orchestrator-client-prefix-page'
+import Prefixes from 'orchestrator-client-prefix-page'
 import 'orchestrator-client-prefix-page/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <Prefixes />
   }
 }
 ```

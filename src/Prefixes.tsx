@@ -168,8 +168,7 @@ class Prefixes extends React.PureComponent<IProps, IState> {
 
   getFreePrefixes = (roots: IpPrefix[]) => {
     const now = Math.floor(Date.now() / 1000)
-    const nowString = ''
-    // const nowString = renderDate(now)
+    const nowString = renderDate(now)
     return roots.map((p) =>
       freeSubnets(p.prefix).then((result) => {
         const { availablePrefixId } = this.state
@@ -445,7 +444,6 @@ class Prefixes extends React.PureComponent<IProps, IState> {
           <FilterDropDown
             items={filterAttributes.state}
             filterBy={this.setFilter('state')}
-            singleSelectFilter={this.singleSelectFilter('state')}
             selectAll={this.selectAll('state')}
             label='prefixes.filters.state'
           />
@@ -459,7 +457,7 @@ class Prefixes extends React.PureComponent<IProps, IState> {
           />
         </div>
         <div>
-          <table className={styles[classNames('prefixes')]}>
+          <table>
             <thead>
               <tr>{columns.map((_column, index) => th(index))}</tr>
             </thead>

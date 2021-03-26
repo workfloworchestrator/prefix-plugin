@@ -2,9 +2,9 @@
  * Copyright 2019-2020 SURF.
  */
 
-import styles from "./FilterDropDown.css";
+import styles from './FilterDropDown.css'
+import { EuiButton, EuiCheckbox, EuiPopover } from '@elastic/eui'
 
-import CheckBox from './CheckBox'
 import React from 'react'
 // import { FormattedMessage } from "react-intl";
 import { Filter } from './utils/types'
@@ -14,10 +14,6 @@ type filterCallback = (filter: Filter) => void
 interface IProps {
   items: Filter[]
   filterBy: filterCallback
-  singleSelectFilter?: (
-    event: React.MouseEvent<HTMLElement>,
-    filter: Filter
-  ) => void
   selectAll?: (event: React.MouseEvent<HTMLElement>) => void
   label?: string
   noTrans?: boolean
@@ -34,43 +30,15 @@ export default class FilterDropDown extends React.PureComponent<
   state: IState = { dropDownActive: false }
 
   renderDropDownItem = (item: Filter, filterBy: filterCallback) => {
-    const { singleSelectFilter } = this.props
-    // const name = noTrans ? (
-    //   item.name
-    // ) : (
-    //   <FormattedMessage id={`filter.${item.name.replace(/ /g, '_')}`} />
-    // )
-    const name = item.name
-    if (singleSelectFilter) {
-      return (
-        <li key={item.name} onClick={() => filterBy(item)}>
-          <CheckBox
-            name={item.name}
-            value={item.selected}
-            onChange={() => filterBy(item)}
-          />
-          <label htmlFor={item.name}>
-            {name}
-            {` (${item.count})`}
-          </label>
-          <i
-            className='fa fa-filter'
-            onClick={(e) => singleSelectFilter(e, item)}
-          />
-        </li>
-      )
-    }
     return (
       <li key={item.name} onClick={() => filterBy(item)}>
-        <CheckBox
-          name={item.name}
-          value={item.selected}
+        <EuiCheckbox
+          title={item.name}
+          id={item.name}
+          checked={item.selected}
+          label={`${item.name} ${item.count}`}
           onChange={() => filterBy(item)}
         />
-        <label htmlFor={item.name}>
-          {name}
-          {` (${item.count})`}
-        </label>
       </li>
     )
   }
@@ -82,36 +50,31 @@ export default class FilterDropDown extends React.PureComponent<
   )
 
   render() {
-    const { items, filterBy, label, selectAll } = this.props
+    const { items, filterBy } = this.props
     const { dropDownActive } = this.state
     const filtered = items.filter((item) => item.selected)
-    // const count = filtered.reduce((acc, item) => item.count, 0)
-    // const name =
-    //   filtered.length === items.length ? (
-    //     <FormattedMessage id='filter.all' values={{ count: count }} />
-    //   ) : (
-    //     <FormattedMessage id='filter.selected' values={{ count: count }} />
-    //   )
-    const name = filtered.length === items.length ? 'all' : 'selected'
-    const faIcon = dropDownActive ? 'fa-caret-up' : 'fa-caret-down'
+    const name = filtered.length === items.length ? 'ALL' : 'FILTERED'
+
+    const button = (
+      <EuiButton
+        iconType={dropDownActive ? 'arrowUp' : 'arrowDown'}
+        iconSide='right'
+        fullWidth
+        onClick={() => this.setState({ dropDownActive: !dropDownActive })}
+      >
+        {name}
+      </EuiButton>
+    )
+
     return (
-      <section className='filter-drop-down'>
-        <div
-          className='filtered'
-          onClick={() => this.setState({ dropDownActive: !dropDownActive })}
-        >
-          <span className='filter-label'>{label}</span>
-          <span className='filter-label-divider'>:</span>
-          <span className='filter-name'>{name}</span>
-          <span>
-            {filtered.length !== items.length && selectAll && (
-              <i className='fa fa-undo' onClick={selectAll} />
-            )}
-            <i className={`fa ${faIcon}`} />
-          </span>
-        </div>
-        {dropDownActive && this.renderDropDown(items, filterBy)}
-      </section>
+      <EuiPopover
+        button={button}
+        isOpen={dropDownActive}
+        closePopover={() => this.setState({ dropDownActive: false })}
+        className={styles.filterButton}
+      >
+        {this.renderDropDown(items, filterBy)}
+      </EuiPopover>
     )
   }
 }
