@@ -7,7 +7,6 @@
 @use "./stylesheets/media_queries.scss";
 @use "./stylesheets/vars";
 
-
 .options {
   display: flex;
   padding-top: 25px;
@@ -206,9 +205,6 @@ table {
   }
 }
 
-
-
-
 .prefixes {
   display: flex;
   flex-direction: column;
@@ -220,11 +216,4 @@ table {
       margin-left: 35px;
     }
   }
-
-
-
 }
-
-
-
-

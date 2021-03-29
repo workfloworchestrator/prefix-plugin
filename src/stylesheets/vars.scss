@@ -48,28 +48,28 @@ $medium: 1680px;
 
 // Z-index
 $z-index: (
-    "sync": 900,
-    "flash": 1020,
-    "explain": 1010,
+  'sync': 900,
+  'flash': 1020,
+  'explain': 1010
 );
 
 // Overrides
 // Force button text color
 .euiButton--primary.euiButton--fill {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .euiButton--warning.euiButton--fill {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .euiButton--warning.euiButton {
-    background-color: #faf0e8 !important;
+  background-color: #faf0e8 !important;
 }
 .euiButton--warning.euiButton--fill {
-    background-color: #e39846 !important;
+  background-color: #e39846 !important;
 }
 
 .euiTitle {
-    color: $dark-grey;
+  color: $dark-grey;
 }
