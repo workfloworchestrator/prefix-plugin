@@ -13,31 +13,36 @@
  *
  */
 import {
-    IpPrefix,
-    IpPrefixSubscription,
+  IpPrefix,
+  IpPrefixSubscription,
+  Organization,
+  Product
+} from '../utils/types'
 
-} from "../utils/types";
+import axiosInstance from './axios'
 
-import axiosInstance from "./axios";
-
-export function catchErrorStatus<T>(promise: Promise<any>, status: number, callback: (json: T) => void) {
-    return promise.catch((err) => {
-        if (err.response && err.response.status === status) {
-            callback(err.response.data);
-        } else {
-            throw err;
-        }
-    });
+export function catchErrorStatus<T>(
+  promise: Promise<any>,
+  status: number,
+  callback: (json: T) => void
+) {
+  return promise.catch((err) => {
+    if (err.response && err.response.status === status) {
+      callback(err.response.data)
+    } else {
+      throw err
+    }
+  })
 }
 
 function fetchJson<R = {}>(
-    path: string,
-    options = {},
-    headers = {},
-    showErrorDialog = true,
-    result = true
+  path: string,
+  options = {},
+  headers = {},
+  showErrorDialog = true,
+  result = true
 ): Promise<R> {
-    return axiosFetch(path, options, headers, showErrorDialog, result);
+  return axiosFetch(path, options, headers, showErrorDialog, result)
 }
 
 // @ts-ignore
@@ -51,42 +56,36 @@ function axiosFetch<R = {}>(
   // preset the config with the relative URL and a GET type.
   // presets can be overridden with `options`.
   console.log(headers, result)
-  return axiosInstance({ url: path, method: "GET", ...options })
+  return axiosInstance({ url: path, method: 'GET', ...options })
     .then((res) => res.data)
     .catch((err) => {
       if (showErrorDialog) {
         setTimeout(() => {
-          throw err;
-        }, 250);
+          throw err
+        }, 250)
       }
-      throw err;
-    });
+      throw err
+    })
 }
 
-
-// export function organisations(): Promise<Organization[] | undefined> {
-//     //@ts-ignore
-//     return fetchJson("crm/organisations", {}, {}, false).catch(() => {
-//         setTimeout(() => {
-//             setFlash(intl.formatMessage({ id: "external.errors.crm_unavailable" }, { type: "Organisations" }), "error");
-//         });
-//         return undefined;
-//     });
-// }
-
-//IPAM the user-defined filters as configured in the database for the IP PREFIX product
-//THIS ONE
-export function prefix_filters(): Promise<IpPrefix[]> {
-    return fetchJson("ipam/prefix_filters");
+export function organisations(): Promise<Organization[] | undefined> {
+  return fetchJson('crm/organisations', {}, {}, false)
 }
 
-//THIS ONE
-export function prefixSubscriptionsByRootPrefix(parentId: number): Promise<IpPrefixSubscription[]> {
-    return fetchJson(`ipam/prefix_subscriptions/${parentId}`);
+export function products(): Promise<Product[]> {
+  return fetchJson('products/')
 }
 
-// THIS ONE
+export function prefixFilters(): Promise<IpPrefix[]> {
+  return fetchJson('ipam/prefix_filters')
+}
+
+export function prefixSubscriptionsByRootPrefix(
+  parentId: number
+): Promise<IpPrefixSubscription[]> {
+  return fetchJson(`ipam/prefix_subscriptions/${parentId}`)
+}
+
 export function freeSubnets(supernet: string): Promise<string[]> {
-    return fetchJson(`ipam/free_subnets/${supernet}`);
+  return fetchJson(`ipam/free_subnets/${supernet}`)
 }
-

@@ -9,7 +9,9 @@ import {
   freeSubnets,
   prefixSubscriptionsByRootPrefix,
   // eslint-disable-next-line camelcase
-  prefix_filters
+  prefixFilters,
+  organisations,
+  products
 } from './api'
 // @ts-ignore
 import FilterDropDown from './FilterDropDown'
@@ -23,6 +25,7 @@ import {
   Filter,
   IpPrefix,
   IpPrefixSubscription,
+  Organization,
   Product,
   // Product,
   SortOption
@@ -34,7 +37,8 @@ import {
   ipamStates,
   ipAddressToNumber,
   familyFullName,
-  renderDate
+  renderDate,
+  organisationNameByUuid
 } from './utils/Lookups'
 interface ExtendedIpPrefixSubscription extends IpPrefixSubscription {
   customer: string
@@ -54,7 +58,10 @@ type Column =
   | 'start_date'
 
 // interface IProps extends WrappedComponentProps {}
-interface IProps {}
+interface IProps {
+  organisations?: Organization[]
+  products?: Product[]
+}
 
 // @ts-ignore
 interface FilterAttributes {
@@ -64,6 +71,8 @@ interface FilterAttributes {
 
 interface IState {
   prefixes: ExtendedIpPrefixSubscription[]
+  organisations: Organization[] | undefined
+  products: Product[] | undefined
   query: string
   searchResults: ExtendedIpPrefixSubscription[]
   sortOrder: SortOption<Column>
@@ -76,6 +85,8 @@ class Prefixes extends React.PureComponent<IProps, IState> {
   // context!: React.ContextType<typeof ApplicationContext>
   state: IState = {
     prefixes: [],
+    organisations: this.props.organisations,
+    products: this.props.products,
     query: '',
     searchResults: [],
     sortOrder: { name: 'prefix', descending: false },
@@ -94,9 +105,26 @@ class Prefixes extends React.PureComponent<IProps, IState> {
   }
 
   componentDidMount() {
-    this.setState({})
+    // Not sure if we need to reset it?
+    // this.setState({})
 
-    prefix_filters().then((result) => {
+    if (this.state.organisations === undefined) {
+      // fetch organisations ourselves
+      console.log(
+        'Prefixes:: No organisations props found => handling fetching of organisations internally'
+      )
+      this.getOrganisations().then()
+    }
+
+    if (this.state.products === undefined) {
+      // fetch organisations ourselves
+      console.log(
+        'Prefixes:: No products props found => handling fetching of products internally'
+      )
+      this.getProducts().then()
+    }
+
+    prefixFilters().then((result) => {
       // @ts-ignore
       const prefixFilters = result.map((p, idx) => ({
         name: p.prefix,
@@ -120,20 +148,29 @@ class Prefixes extends React.PureComponent<IProps, IState> {
     }
   }
 
+  getOrganisations = async () => {
+    await organisations().then((result) =>
+      this.setState({ organisations: result })
+    )
+  }
+
+  getProducts = async () => {
+    await products().then((result) => this.setState({ products: result }))
+  }
+
   getPrefixSubscriptions = async (roots: IpPrefix[]) => {
     // @ts-ignore
-    const { organisations } = this.context
+    const { organisations } = this.state
     const mapper = async (root: IpPrefix) => {
       await prefixSubscriptionsByRootPrefix(root.id)
         .then((result) =>
           result.map((prefix) => {
-            // @ts-ignore
+            // eslint-disable-next-line camelcase
             const { customer_id, start_date, subscription_id } = prefix
-            const organisation = 'Test'
-            // const organisation =
-            //   customer_id === undefined
-            //     ? 'Unknown'
-            //     : organisationNameByUuid(customer_id, organisations)
+            const organisation =
+              customer_id === undefined
+                ? 'Unknown'
+                : organisationNameByUuid(customer_id, organisations)
             const subscription =
               subscription_id === undefined ? 'Unknown' : subscription_id
             return {
@@ -386,23 +423,23 @@ class Prefixes extends React.PureComponent<IProps, IState> {
     _event: React.MouseEvent<HTMLTableRowElement>
   ) => {
     // eslint-disable-next-line camelcase
+    const { products } = this.state
     const { subscription_id, prefix, prefixlen } = selection
     // eslint-disable-next-line camelcase
     const product_id = memoize(
       constant(
-        this.context.products
+        // @ts-ignore
+        products
           .filter((p: any) => p.tag === 'IP_PREFIX')
           .map((p: any) => p.product_id)
           .pop()
       )
     )()
     if (isValidUUIDv4(subscription_id)) {
-      this.context.redirect('/subscriptions/' + subscription_id)
+      window.location.href = '/subscriptions/' + subscription_id
     } else if (subscription_id === 'N/A') {
       const network = prefix.split('/')[0]
-      this.context.redirect(
-        `new-process/?product=${product_id}&prefix=${network}&prefixlen=${prefixlen}&prefix_min=${prefixlen}`
-      )
+      window.location.href = `new-process/?product=${product_id}&prefix=${network}&prefixlen=${prefixlen}&prefix_min=${prefixlen}`
     }
   }
 
