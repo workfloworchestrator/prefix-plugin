@@ -69,7 +69,7 @@ function axiosFetch<R = {}>(
 }
 
 export function organisations(): Promise<Organization[] | undefined> {
-  return fetchJson('crm/organisations', {}, {}, false)
+  return fetchJson('surf/crm/organisations', {}, {}, false)
 }
 
 export function products(): Promise<Product[]> {
@@ -77,15 +77,15 @@ export function products(): Promise<Product[]> {
 }
 
 export function prefixFilters(): Promise<IpPrefix[]> {
-  return fetchJson('ipam/prefix_filters')
+  return fetchJson('surf/ipam/prefix_filters')
 }
 
 export function prefixSubscriptionsByRootPrefix(
   parentId: number
 ): Promise<IpPrefixSubscription[]> {
-  return fetchJson(`ipam/prefix_subscriptions/${parentId}`)
+  return fetchJson(`surf/ipam/prefix_subscriptions/${parentId}`)
 }
 
 export function freeSubnets(supernet: string): Promise<string[]> {
-  return fetchJson(`ipam/free_subnets/${supernet}`)
+  return fetchJson(`surf/ipam/free_subnets/${supernet}`)
 }
