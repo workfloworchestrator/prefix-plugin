@@ -6,7 +6,6 @@ import styles from './FilterDropDown.css'
 import { EuiButton, EuiCheckbox, EuiPopover } from '@elastic/eui'
 
 import React from 'react'
-// import { FormattedMessage } from "react-intl";
 import { Filter } from './utils/types'
 
 type filterCallback = (filter: Filter) => void

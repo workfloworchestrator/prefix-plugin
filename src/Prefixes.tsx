@@ -32,7 +32,6 @@ import {
 } from './utils/types'
 // @ts-ignore
 import { isEmpty, isValidUUIDv4, stop } from './utils/Utils'
-import classNames from 'classNames'
 import {
   ipamStates,
   ipAddressToNumber,
@@ -458,10 +457,11 @@ class Prefixes extends React.PureComponent<IProps, IState> {
     ]
     const th = (index: number) => {
       const name = columns[index]
+      console.log(name)
       return (
         <th
           key={index}
-          className={styles[classNames(name)]}
+          className={styles[name]}
           onClick={this.toggleSort(name)}
         >
           <span>{name}</span>
@@ -477,7 +477,7 @@ class Prefixes extends React.PureComponent<IProps, IState> {
     const sortedPrefixes = this.sort(filteredPrefixes)
     return (
       <div>
-        <div className={styles[classNames('options')]}>
+        <div className={styles.options}>
           <FilterDropDown
             items={filterAttributes.state}
             filterBy={this.setFilter('state')}
