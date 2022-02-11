@@ -60,7 +60,7 @@
     "lodash": "^4.14.149",
     "microbundle-crl": "^0.13.10",
     "moment": "^2.29.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.14.0",
